@@ -1,0 +1,2 @@
+Alimentação,800.0
+Farmácia,200.0

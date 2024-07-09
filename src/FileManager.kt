@@ -1,9 +1,11 @@
 import java.io.File
 
-// Classe FileManager responsável por ler e escrever ganhos e despesas em arquivos TXT
-class FileManager(private val incomeFileName: String, private val expenseFileName: String) {
-
-    // Lê o ganho mensal do arquivo incomeFileName
+class FileManager(
+    private val incomeFileName: String,
+    private val budgetsFileName: String,
+    private val expensesFileName: String
+) {
+    // Métodos para ganho mensal
     fun readIncome(): Income? {
         val file = File(incomeFileName)
         return if (file.exists() && file.readText().isNotBlank()) {
@@ -14,16 +16,41 @@ class FileManager(private val incomeFileName: String, private val expenseFileNam
         }
     }
 
-    // Escreve o ganho mensal no arquivo incomeFileName
     fun writeIncome(income: Income) {
         val file = File(incomeFileName)
         file.writeText(income.amount.toString())
     }
 
-    // Lê as despesas do arquivo expenseFileName
+    // Métodos para orçamentos de categoria
+    fun readBudgets(): List<CategoryBudget> {
+        val budgets = mutableListOf<CategoryBudget>()
+        val file = File(budgetsFileName)
+
+        if (file.exists()) {
+            file.forEachLine { line ->
+                val parts = line.split(",")
+                if (parts.size == 2) {
+                    val budget = CategoryBudget(parts[0], parts[1].toDouble())
+                    budgets.add(budget)
+                }
+            }
+        }
+        return budgets
+    }
+
+    fun writeBudgets(budgets: List<CategoryBudget>) {
+        val file = File(budgetsFileName)
+        file.printWriter().use { out ->
+            budgets.forEach { budget ->
+                out.println("${budget.category},${budget.amount}")
+            }
+        }
+    }
+
+    // Métodos para despesas
     fun readExpenses(): List<Expense> {
         val expenses = mutableListOf<Expense>()
-        val file = File(expenseFileName)
+        val file = File(expensesFileName)
 
         if (file.exists()) {
             file.forEachLine { line ->
@@ -37,20 +64,12 @@ class FileManager(private val incomeFileName: String, private val expenseFileNam
         return expenses
     }
 
-    // Escreve as despesas no arquivo expenseFileName
     fun writeExpenses(expenses: List<Expense>) {
-        val file = File(expenseFileName)
+        val file = File(expensesFileName)
         file.printWriter().use { out ->
             expenses.forEach { expense ->
                 out.println("${expense.description},${expense.category},${expense.amount}")
             }
         }
-    }
-
-    // Adiciona uma nova despesa ao arquivo expenseFileName
-    fun addExpense(expense: Expense) {
-        val expenses = readExpenses().toMutableList()
-        expenses.add(expense)
-        writeExpenses(expenses)
     }
 }

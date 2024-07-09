@@ -1,2 +1,4 @@
 Comida,Alimentação,20.0
 ,carro,44.0
+Comida com a juba,Alimentação,20.0
+Minoxidil,Farmacia,50.0
