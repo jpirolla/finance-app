@@ -1,0 +1,2 @@
+Comida,Alimentação,20.0
+,carro,44.0
