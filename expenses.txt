@@ -1,4 +1,8 @@
-Comida,Alimentação,20.0
-,carro,44.0
-Comida com a juba,Alimentação,20.0
-Minoxidil,Farmacia,50.0
+Café da manhã,Alimentação,15.0
+Ônibus,Transporte,30.0
+Almoço no trabalho,Alimentação,25.0
+Remédio para dor de cabeça,Farmácia,12.0
+Combustível,Transporte,50.0
+Jantar,Alimentação,35.0
+Supermercado,Alimentação,100.0
+Creme hidratante,Farmácia,22.0
