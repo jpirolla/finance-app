@@ -100,17 +100,6 @@ Ao executar o programa, você verá um menu interativo com as seguintes opções
 5. **Sair**:
     - Encerra o programa.
 
-## Exemplo de Uso
-
-1. **Inserir ganho mensal**:
-    - Digite o valor do seu ganho mensal quando solicitado.
-
-2. **Inserir orçamento para categoria**:
-    - Digite o nome da categoria e o valor do orçamento para essa categoria.
-
-3. **Adicionar despesa**:
-    - Digite a descrição, categoria e valor da despesa.
-
 4. **Ver despesas e orçamentos restantes**:
     - Exibe uma lista de todas as despesas e o valor restante para cada categoria.
 
